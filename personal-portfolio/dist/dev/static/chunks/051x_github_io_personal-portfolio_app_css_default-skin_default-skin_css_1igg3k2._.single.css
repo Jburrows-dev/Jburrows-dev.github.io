@@ -1,0 +1,26 @@
+/* [project]/Desktop/Personal_Projects/Jburrows-dev.github.io/personal-portfolio/app/css/default-skin/default-skin.css [app-client] (css) */
+@keyframes clockwise {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes donut-rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(-140deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+/*# sourceMappingURL=051x_github_io_personal-portfolio_app_css_default-skin_default-skin_css_1igg3k2._.single.css.map*/
