@@ -48,17 +48,17 @@ export default function Drawer({ name, avatar, social, isOpen, setIsOpen }: Draw
                 style={{ pointerEvents: isOpen ? "auto" : "none" }}
                 aria-hidden={!isOpen}
             >
-                <div className="nicescroll-bar">
-                    <div className="flex justify-end items-center m-0 p-0">
-                        <MenuToggle className="!h-auto !w-auto m-1" color="text-secondary" isOpen={isOpen} toggle={() => setIsOpen((v) => !v)} />
-                    </div>
+                <div>
                     <div className="drawer-profile-wrap">
+                        <div className="flex justify-end items-center m-0 p-0">
+                            <MenuToggle className="!h-auto !w-auto m-1" color="text-secondary" isOpen={isOpen} toggle={() => setIsOpen((v) => !v)} />
+                        </div>
                         <Image
                             src={avatar}
                             alt={name}
-                            className="candidate-img-drawer mt-25 mb-20"
-                            width={250}
-                            height={250}
+                            className="candidate-img-drawer mt-25 mb-20 !mx-auto"
+                            width={150}
+                            height={150}
                         />
                         <span className="candidate-name block mb-10 text-center">{name}</span>
                         <motion.ul className="social-icons mb-30" variants={navListVariants}>
@@ -72,11 +72,11 @@ export default function Drawer({ name, avatar, social, isOpen, setIsOpen }: Draw
                         </motion.ul>
                     </div>
 
-                    <motion.ul className="mdl-navigation" variants={navListVariants}>
+                    <motion.ul className="drawer-navigation" variants={navListVariants}>
                         {navItems.map((item) => (
                             <motion.li key={item.href} variants={itemVariants}>
                                 <a
-                                    className="mdl-navigation__link border-t-(--border)"
+                                    className="drawer-nav-link border-t-(--border)"
                                     data-scroll
                                     href={item.href}
                                     onClick={() => setIsOpen(false)}
@@ -87,10 +87,10 @@ export default function Drawer({ name, avatar, social, isOpen, setIsOpen }: Draw
                             </motion.li>
                         ))}
                     </motion.ul>
+                </div>
 
-                    <div className="drawer-footer mt-50 mb-30 text-center">
-                        <p className="text-xs mt-10">{name}© 2026.</p>
-                    </div>
+                <div className="drawer-footer mb-5 text-center">
+                    <p className="!text-xs mt-10">{name}© 2026.</p>
                 </div>
             </motion.nav>
         </>

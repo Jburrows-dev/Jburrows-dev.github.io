@@ -11,24 +11,25 @@ type NavProps = {
 
 export default function Nav({ name, isOpen, setIsOpen }: NavProps) {
     return (
-        <nav className="">
+        <nav className="top-nav flex justify-between h-12 lg:h-16">
             <div className="flex items-center justify-left gap-2 ">
                 <MenuToggle isOpen={isOpen} toggle={() => setIsOpen((v) => !v)} />
                 <Link href="/">
-                    <span className="title font-bold">{name}</span>
+                    <span className="title !tracking-wide">{name}</span>
                 </Link>
             </div>
             <div className="mdl-layout-spacer"></div>
-            <ul className="nav-links">
-                <li><Link className="nav_link" data-scroll href="#body">about</Link></li>
-                <li><Link className="nav_link" data-scroll href="#portfolio_sec">what i do</Link></li>
-                <li><Link className="nav_link" data-scroll href="#experience_sec">experience</Link></li>
-                <li><Link className="nav_link" data-scroll href="#skills_sec">skills</Link></li>
-                <li><Link className="nav_link" data-scroll href="#certs_sec">certifications</Link></li>
-                <li><Link className="nav_link" data-scroll href="#project_sec">projects</Link></li>
-                <li><Link className="nav_link" data-scroll href="#contact_sec">contact</Link></li>
-            </ul>
-            <Toggle />
+            <div className="flex justify-right items-center gap-8">
+                <ul className="nav-links flex gap-2">
+                    <li><Link className="nav-link" data-scroll href="#body">About</Link></li>
+                    <li><Link className="nav-link" data-scroll href="#portfolio_sec">What I Do</Link></li>
+                    <li><Link className="nav-link" data-scroll href="#experience_sec">Experience</Link></li>
+                    <li><Link className="nav-link" data-scroll href="#skills_sec">Skills</Link></li>
+                    <li><Link className="nav-link" data-scroll href="#certs_sec">Certifications</Link></li>
+                    <li><Link className="nav-link" data-scroll href="#project_sec">Projects</Link></li>
+                </ul>
+                <Toggle />
+            </div>
         </nav>
     )
 }

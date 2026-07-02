@@ -77,7 +77,7 @@
 
 .bg-struct {
   position: absolute;
-  height: 520px;
+  height: 600px;
   width: 100%;
   left: 0;
   top: 0;
@@ -197,17 +197,21 @@ section {
   vertical-align: baseline;
 }
 
+nav.top-nav {
+  padding: 5px 1rem !important;
+}
+
 nav {
   display: flex;
   justify-content: space-between !important;
   align-items: center;
-  padding: 5px 1rem !important;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   width: 100vw;
   background-color: var(--bg);
+  z-index: 99;
 }
 
 .nav-links {
@@ -221,6 +225,10 @@ nav {
   .nav-links {
     display: none !important;
   }
+}
+
+.navlink {
+  text-transform: capitalize;
 }
 
 html,
@@ -345,7 +353,6 @@ p {
 
 .main-content {
   width: 100%;
-  margin-top: 72px;
   display: flex;
   justify-content: center;
 }
@@ -392,25 +399,25 @@ p {
   color: var(--text);
 }
 
-.mdl-card {
+.card {
   width: auto;
   min-height: inherit;
   position: static;
   overflow: visible;
   display: block;
   padding: 45px 25px;
-  background: var(--surface);
+  background: var(--bg);
   box-shadow: 0 2px 8px var(--shadow);
   border-radius: 8px;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mdl-card__title {
+.title {
   display: block;
   color: var(--text);
 }
 
-.mdl-card__supporting-text {
+.supporting-text {
   padding: 20px;
   overflow: visible;
   width: 100%;
@@ -458,15 +465,15 @@ p {
 }
 
 .mdl-layout__header .mdl-layout-title,
-.mdl-layout__header .mdl-navigation__link {
+.mdl-layout__header .drawer-nav-link {
   color: var(--text) !important;
 }
 
-.mdl-layout__header .mdl-layout__header-row .mdl-navigation li {
+.mdl-layout__header .mdl-layout__header-row .drawer-navigation li {
   cursor: pointer;
 }
 
-.mdl-layout__header .mdl-layout__header-row .mdl-navigation .mdl-navigation__link {
+.mdl-layout__header .mdl-layout__header-row .drawer-navigation .drawer-nav-link {
   color: var(--text);
   text-transform: capitalize;
   padding: 0 14px;
@@ -475,18 +482,12 @@ p {
   font-weight: 500;
 }
 
-.mdl-layout__header .mdl-layout__header-row .mdl-navigation .mdl-navigation__link:hover {
+.mdl-layout__header .mdl-layout__header-row .drawer-navigation .drawer-nav-link:hover {
   background: none;
   color: var(--primary);
 }
 
-.mdl-layout__header .mdl-layout__header-row .mdl-navigation .mdl-navigation__link:focus,
-.mdl-layout__header .mdl-layout__header-row .mdl-navigation .mdl-navigation__link:active {
-  background: none;
-  opacity: 1;
-}
-
-.mdl-layout__header .mdl-layout__header-row .mdl-navigation .mdl-navigation__link:after {
+.mdl-layout__header .mdl-layout__header-row .drawer-navigation .drawer-nav-link:after {
   background: var(--primary);
   bottom: 0;
   content: "";
@@ -497,7 +498,7 @@ p {
   transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
 }
 
-.mdl-layout__header .mdl-layout__header-row .mdl-navigation .mdl-navigation__link:hover:after {
+.mdl-layout__header .mdl-layout__header-row .drawer-navigation .drawer-nav-link:hover:after {
   width: 100%;
   left: 0;
   right: 0;
@@ -521,11 +522,12 @@ p {
 
 /* ── Drawer ── */
 /* !important below is necessary: the real material.min.css from cdnjs also
-   defines .drawer / .mdl-navigation and loads after this file,
+   defines .drawer / .drawer-navigation and loads after this file,
    so on tied specificity its rules would otherwise win the cascade. */
 .drawer {
-  display: block !important;
-  flex-direction: initial !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between;
   color: inherit;
   background: #1e1e2e;
   border-right: medium none;
@@ -533,19 +535,21 @@ p {
   top: 0 !important;
   left: 0 !important;
   height: 100vh !important;
-  width: 300px !important;
+  width: 250px !important;
   max-width: 85vw;
   z-index: 1000 !important;
   overflow-y: auto !important;
 }
 
-.drawer .mdl-navigation {
-  display: block !important;
+.drawer .drawer-navigation {
+  display: flex !important;
+  flex-direction: column;
 }
 
-.drawer .mdl-navigation li {
+.drawer .drawer-navigation li {
   display: block !important;
   width: 100% !important;
+  padding: 10px 20px;
 }
 
 .drawer .social-icons li {
@@ -581,21 +585,28 @@ p {
 }
 
 .drawer .drawer-profile-wrap {
+  box-sizing: border-box;
+  height: 250px;
+  width: 250px;
+  padding: 8px;
+  border-radius: 8px;
   overflow: hidden;
   background: #16161e;
 }
 
-.drawer.candidate-img-drawer {
-  height: 123px;
-  width: 123px;
+.candidate-img-drawer {
+  height: 125px;
+  width: 125px;
   border-radius: 50%;
-  margin: 0 auto;
+  margin: 8px auto;
+  border-radius: 50% !important;
 }
 
 .drawer .candidate-name {
-  font-size: 18px;
+  font-size: large;
   color: #fff;
   text-transform: capitalize;
+  margin-bottom: 3px;
 }
 
 .drawer .social-icons {
@@ -604,12 +615,13 @@ p {
 
 .drawer .social-icons li {
   display: inline-block;
-  padding: 0 7px;
+  padding: 0 10px;
 }
 
 .drawer .social-icons li a i {
   color: #848484;
   transition: 0.3s ease;
+  font-size: 20px;
 }
 
 .drawer .social-icons li a.facebook-link:hover i {
@@ -628,25 +640,36 @@ p {
   color: #e4405f;
 }
 
-.drawer .mdl-navigation {
+.drawer .drawer-navigation {
   padding-top: 0;
 }
 
-.drawer .mdl-navigation li .mdl-navigation__link {
+.drawer .drawer-navigation li a {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawer .drawer-navigation li .drawer-nav-link {
   color: #969696;
   transition: 0.3s ease;
 }
 
-.drawer .mdl-navigation li .mdl-navigation__link:hover {
-  background: #16161e;
-  color: var(--primary-light);
+.drawer .drawer-navigation li:hover {
+  .drawer-nav-link {
+    color: var(--primary-light);
+  }
+
+  background-color: #16161e;
 }
 
-.drawer .mdl-navigation li:focus {
+
+.drawer .drawer-navigation li:focus {
   outline: none;
 }
 
-.drawer .mdl-navigation li ul li .mdl-navigation__link {
+.drawer .drawer-navigation li ul li .drawer-nav-link {
   padding-left: 72px;
 }
 
@@ -655,6 +678,29 @@ p {
 }
 
 /* ── About ── */
+.about-sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.info-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 762px) {
+  .about-sec {
+    flex-direction: row;
+  }
+
+  .info-wrap {
+    margin-bottom: 0px;
+  }
+}
+
 .about-sec .candidate-img {
   height: 230px;
   width: 230px;
@@ -662,7 +708,8 @@ p {
   background: rgba(0, 0, 0, 0.26);
   background-size: cover;
   margin: 0 auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 4px 20px var(--shadow);
   border: 4px solid var(--surface);
 }
@@ -731,34 +778,34 @@ p {
   margin-bottom: 10px;
 }
 
-.profile-sec .mdl-card {
+.profile-sec .card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.profile-sec .mdl-card:hover {
+.profile-sec .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px var(--shadow);
 }
 
 /* ── Interests ── */
-.interest-sec .mdl-card i {
+.interest-sec .card i {
   font-size: 30px;
   display: block;
   color: var(--primary) !important;
 }
 
-.interest-sec .mdl-card span {
+.interest-sec .card span {
   display: block;
   text-transform: capitalize;
   margin-top: 25px;
   color: var(--text);
 }
 
-.interest-sec .mdl-card {
+.interest-sec .card {
   transition: transform 0.2s ease;
 }
 
-.interest-sec .mdl-card:hover {
+.interest-sec .card:hover {
   transform: translateY(-3px);
 }
 
@@ -955,38 +1002,38 @@ p {
   padding: 0;
 }
 
-#repo-card .mdl-card__supporting-text {
+#repo-card .card__supporting-text {
   flex: 1;
   /* grows to fill space, pushing actions to bottom */
   display: flex;
   flex-direction: column;
 }
 
-#repo-card .mdl-card__supporting-text p {
+#repo-card .card__supporting-text p {
   flex: 1;
   /* description takes remaining height */
 }
 
-#repo-card .mdl-card__actions {
+#repo-card .card__actions {
   margin-top: auto;
   /* pin action bar to bottom */
 }
 
-.blog-sec .mdl-card .mdl-card__title {
+.blog-sec .card .card__title {
   overflow: hidden;
 }
 
-.blog-sec .mdl-card .mdl-card__title .blog-img {
+.blog-sec .card .card__title .blog-img {
   width: 100%;
   transform: scale(1.01);
   transition: 1s ease;
 }
 
-.blog-sec .mdl-card:hover .mdl-card__title .blog-img {
+.blog-sec .card:hover .card__title .blog-img {
   transform: scale3d(1.1, 1.1, 1);
 }
 
-.blog-sec .mdl-card .blog-cat .lang {
+.blog-sec .card .blog-cat .lang {
   width: 12px;
   height: 12px;
   border-radius: 100%;
@@ -995,13 +1042,13 @@ p {
   position: relative;
 }
 
-.blog-sec .mdl-card .blog-cat {
+.blog-sec .card .blog-cat {
   display: block;
   font-size: 14px;
   text-transform: capitalize;
 }
 
-.blog-sec .mdl-card .mdl-button--fab {
+.blog-sec .card .mdl-button--fab {
   position: absolute;
   right: 20px;
   top: 0;
@@ -1009,27 +1056,27 @@ p {
   background: var(--primary) !important;
 }
 
-.blog-sec .mdl-card .mdl-button--fab i {
+.blog-sec .card .mdl-button--fab i {
   font-size: 28px;
   line-height: 48px;
   color: #e8eae9;
 }
 
-.blog-sec .mdl-card .mdl-button--fab:hover i {
+.blog-sec .card .mdl-button--fab:hover i {
   color: #fff;
 }
 
-.blog-sec .mdl-card .mdl-card__actions {
+.blog-sec .card .card__actions {
   display: flex;
   align-items: center;
 }
 
-.blog-sec .mdl-card .mdl-card__actions i {
+.blog-sec .card .card__actions i {
   color: #848484;
   font-size: 20px;
 }
 
-.blog-sec .mdl-card .mdl-card__actions .blog-post-date {
+.blog-sec .card .card__actions .blog-post-date {
   font-size: 14px;
 }
 
@@ -1101,21 +1148,14 @@ p {
   color: var(--text);
 }
 
-@media (max-width: 1023px) {
-  .mdl-layout--large-screen-only {
-    display: none;
-  }
-
-  .mdl-layout__header {
-    width: 100%;
-  }
-}
-
 .container {
   width: 100%;
   max-width: 970px;
   margin: 0 auto;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 @media (min-width: 992px) {
@@ -1125,10 +1165,6 @@ p {
 }
 
 @media (max-width: 768px) {
-  .mt-sm-120 {
-    margin-top: 120px !important;
-  }
-
   .about-sec .candidate-img {
     height: 180px;
     width: 180px;

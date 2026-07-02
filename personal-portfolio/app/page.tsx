@@ -31,12 +31,12 @@ export default function Home() {
         <main className="main-content relative">
           <div className="container">
             <About />
-            {/* <WhatIDo attributes={resume.whatIDo} />
+            <WhatIDo attributes={resume.whatIDo} />
             <Experience experiences={resume.experience} />
-            <Skill skills={resume.skills} />
-            <Certifications certifications={resume.certifications} />
-            <Repos repos={resume.repos} />
-            <Footer name={about.name} /> */}
+            {/* <Skill skills={resume.skills} /> */}
+            {/* <Certifications certifications={resume.certifications} /> */}
+            {/* <Repos repos={resume.repos} /> */}
+            <Footer name={about.name} /> 
           </div>
         </main>
       </div>
