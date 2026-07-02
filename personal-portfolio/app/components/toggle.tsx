@@ -15,13 +15,13 @@ export default function Toggle() {
 
     return (
         <button
-            className='toggleBar'
+            id='theme-toggle'
             style={{
                 justifyContent: "flex-" + (isLight ? "start" : "end"),
             }}
             onClick={toggleDarkMode}>
             <motion.div
-                className="toggleBall"
+                id="theme-toggle-ball"
                 layout
                 transition={{
                     type: "spring",

@@ -12,15 +12,23 @@ export default function About() {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="mdl-card mdl-shadow--2dp">
-                        <div className="row">
-                            <div className="col-md-5 col-xs-12 mb-30">
+                        <div className="row md:grid-cols-12">
+                            <div className="md:col-span-5 col-span-12 md:col-span-full mb-30">
                                 <Image id="about-img" className="candidate-img mb-35" src={about.avatar} alt={about.name} width={250} height={250} />
                                 <ul id="about-social" className="social-icons">
                                     {social.map(s =>
                                         <li key={s.id}>
                                             <Link className={s.class} href={s.url}>
-                                                <i id={s.id} className={`zmdi ${s.icon}`}></i>
-                                                <div className="mdl-tooltip" data-mdl-for={s.id}>{s.label}</div>
+                                                <div className="group relative inline-block">
+                                                    <i id={s.id} className={`zmdi ${s.icon}`}></i>
+
+                                                    <div className="absolute bottom-full left-1/2 mb-2 w-max -translate-x-1/2 scale-90 opacity-0 pointer-events-none transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100">
+                                                        <div className="relative bg-slate-900 text-white text-xs rounded px-3 py-1.5 shadow-xl">
+                                                            {s.label}
+                                                            <div className="absolute top-full left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1 bg-slate-900 rotate-45"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </Link>
                                         </li>
                                     )}

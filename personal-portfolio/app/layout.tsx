@@ -27,14 +27,6 @@ export default function RootLayout({
       lang="en"
       className={`h-full antialiased`}
     >
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.3.0/material.min.css"
-          integrity="sha512-jEuZ7UJIkLuNJYX1ONC+vhYwf0uYbqbd3IoHO8bHRzl8mpB5aj1wLtjxzm5F7fzuqpNQvP1FZXYtgv6kWhVKvQ=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer" />
-      </head>
       <body>{children}</body>
     </html>
   );

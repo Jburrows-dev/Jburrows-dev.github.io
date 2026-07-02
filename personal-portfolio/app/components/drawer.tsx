@@ -2,16 +2,20 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import React from 'react'
 import type { Variants } from "motion/react"
 import { stagger } from "motion/react"
 import * as motion from "motion/react-client"
 import { useState } from "react"
 import { social } from "./types/types"
+import MenuToggle from "./menuToggle"
 
 type DrawerProps = {
     name: string
     avatar: string
-    social: Array<social>
+    social: Array<social>,
+    isOpen: boolean,
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const navItems = [
@@ -23,13 +27,10 @@ const navItems = [
     { href: "#project_sec", icon: "zmdi-code", label: "projects" },
 ]
 
-export default function Drawer({ name, avatar, social }: DrawerProps) {
-    const [isOpen, setIsOpen] = useState(false)
+export default function Drawer({ name, avatar, social, isOpen, setIsOpen }: DrawerProps) {
 
     return (
         <>
-            <MenuToggle isOpen={isOpen} toggle={() => setIsOpen((v) => !v)} />
-
             <motion.div
                 className="drawer-backdrop"
                 initial={false}
@@ -40,7 +41,7 @@ export default function Drawer({ name, avatar, social }: DrawerProps) {
             />
 
             <motion.nav
-                className="mdl-layout__drawer"
+                className="drawer"
                 initial={false}
                 animate={isOpen ? "open" : "closed"}
                 variants={panelVariants}
@@ -48,6 +49,9 @@ export default function Drawer({ name, avatar, social }: DrawerProps) {
                 aria-hidden={!isOpen}
             >
                 <div className="nicescroll-bar">
+                    <div className="flex justify-end items-center m-0 p-0">
+                        <MenuToggle className="!h-auto !w-auto m-1" color="text-secondary" isOpen={isOpen} toggle={() => setIsOpen((v) => !v)} />
+                    </div>
                     <div className="drawer-profile-wrap">
                         <Image
                             src={avatar}
@@ -93,10 +97,6 @@ export default function Drawer({ name, avatar, social }: DrawerProps) {
     )
 }
 
-/**
- * ==============   Variants   ================
- */
-
 const panelVariants: Variants = {
     open: {
         x: 0,
@@ -135,55 +135,3 @@ const itemVariants: Variants = {
     },
 }
 
-/**
- * ==============   Toggle button   ================
- */
-
-interface PathProps {
-    d?: string
-    variants: Variants
-    transition?: { duration: number }
-}
-
-const Path = (props: PathProps) => (
-    <motion.path
-        fill="transparent"
-        strokeWidth="2.5"
-        stroke="var(--text)"
-        strokeLinecap="round"
-        {...props}
-    />
-)
-
-const MenuToggle = ({ isOpen, toggle }: { isOpen: boolean; toggle: () => void }) => (
-    <button className="drawer-toggle-btn" onClick={toggle} aria-label="Toggle menu">
-        <motion.svg
-            width="20"
-            height="20"
-            viewBox="0 0 23 23"
-            initial={false}
-            animate={isOpen ? "open" : "closed"}
-        >
-            <Path
-                variants={{
-                    closed: { d: "M 2 2.5 L 20 2.5" },
-                    open: { d: "M 3 16.5 L 17 2.5" },
-                }}
-            />
-            <Path
-                d="M 2 9.423 L 20 9.423"
-                variants={{
-                    closed: { opacity: 1 },
-                    open: { opacity: 0 },
-                }}
-                transition={{ duration: 0.1 }}
-            />
-            <Path
-                variants={{
-                    closed: { d: "M 2 16.346 L 20 16.346" },
-                    open: { d: "M 3 2.5 L 17 16.346" },
-                }}
-            />
-        </motion.svg>
-    </button>
-)

@@ -44,15 +44,16 @@
   --shadow: rgba(0, 0, 0, 0.40);
 }
 
-/* Added */
-.toggleBar {
-  background-color: var(--text-secondary);
+/* ── Dark mode toggle ── */
+#theme-toggle {
+  background-color: var(--shadow);
   padding: 5px;
   width: 50px;
   border-radius: 23px;
+  display: flex;
 }
 
-.toggleBall {
+#theme-toggle-ball {
   width: 18px;
   height: 18px;
   background-color: var(--primary);
@@ -196,15 +197,28 @@ section {
   vertical-align: baseline;
 }
 
-nav .mdl-layout__header-row {
+nav {
   display: flex;
-  justify-content: space-around !important;
+  justify-content: space-between !important;
   align-items: center;
-  padding: 0 20px !important;
+  padding: 5px 1rem !important;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  background-color: var(--bg);
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--text);
 }
 
 @media (max-width: 768px) {
-  .nav {
+  .nav-links {
     display: none !important;
   }
 }
@@ -315,160 +329,6 @@ h5 {
 p {
   font-size: 15px;
   line-height: 1.7;
-}
-
-/* ── Spacing utilities ── */
-.pa-0 {
-  padding: 0 !important;
-}
-
-.pa-20 {
-  padding: 20px !important;
-}
-
-.pt-30 {
-  padding-top: 30px !important;
-}
-
-.pb-30 {
-  padding-bottom: 30px !important;
-}
-
-.pr-10 {
-  padding-right: 10px !important;
-}
-
-.pr-15 {
-  padding-right: 15px !important;
-}
-
-.mt-10 {
-  margin-top: 10px !important;
-}
-
-.mt-15 {
-  margin-top: 15px !important;
-}
-
-.mt-20 {
-  margin-top: 20px !important;
-}
-
-.mt-25 {
-  margin-top: 25px !important;
-}
-
-.mt-30 {
-  margin-top: 30px !important;
-}
-
-.mt-50 {
-  margin-top: 50px !important;
-}
-
-.mt-180 {
-  margin-top: 180px !important;
-}
-
-.mb-10 {
-  margin-bottom: 10px !important;
-}
-
-.mb-15 {
-  margin-bottom: 15px !important;
-}
-
-.mb-20 {
-  margin-bottom: 20px !important;
-}
-
-.mb-30 {
-  margin-bottom: 30px !important;
-}
-
-.mb-35 {
-  margin-bottom: 35px !important;
-}
-
-.mb-40 {
-  margin-bottom: 40px !important;
-}
-
-.ml-5 {
-  margin-left: 5px !important;
-}
-
-.mr-5 {
-  margin-right: 5px !important;
-}
-
-.mr-10 {
-  margin-right: 10px !important;
-}
-
-.sec-pad-top-sm {
-  padding-top: 50px;
-}
-
-.sec-pad-bottom {
-  padding-bottom: 70px;
-}
-
-/* ── Color tokens ── */
-.font-12 {
-  font-size: 12px;
-}
-
-.font-grey {
-  color: var(--text-secondary) !important;
-}
-
-.font-white {
-  color: #fff !important;
-}
-
-.font-green {
-  color: var(--secondary) !important;
-}
-
-.font-blue {
-  color: var(--primary) !important;
-}
-
-.font-yellow {
-  color: #fec107 !important;
-}
-
-.font-red {
-  color: #ff3d00 !important;
-}
-
-.bg-green {
-  background: var(--secondary) !important;
-}
-
-.bg-blue {
-  background: var(--primary) !important;
-}
-
-.bg-gray {
-  background: #211f1f !important;
-}
-
-.font-capitalize {
-  text-transform: capitalize;
-}
-
-.font-unsetcase {
-  text-transform: none;
-}
-
-.inline-block {
-  display: inline-block !important;
-}
-
-.block {
-  display: block !important;
 }
 
 .border-top-sep {
@@ -582,7 +442,7 @@ p {
   flex-direction: column;
 }
 
-.mdl-layout__container .mdl-layout__drawer,
+.mdl-layout__container .drawer,
 .mdl-layout__container .mdl-layout__obfuscator {
   position: fixed;
 }
@@ -643,11 +503,11 @@ p {
   right: 0;
 }
 
-.mdl-layout__header .mdl-layout__drawer-button {
+.mdl-layout__header .drawer-button {
   color: var(--text);
 }
 
-.mdl-layout__header .mdl-layout__drawer-button:focus {
+.mdl-layout__header .drawer-button:focus {
   outline: none;
 }
 
@@ -659,29 +519,11 @@ p {
   background-color: transparent !important;
 }
 
-/* ── Dark mode toggle ── */
-#theme-toggle {
-  color: var(--text);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px 8px;
-  margin-right: 4px;
-  font-size: 22px;
-  line-height: 1;
-  vertical-align: middle;
-  transition: color 0.3s ease;
-}
-
-#theme-toggle:hover {
-  color: var(--primary);
-}
-
 /* ── Drawer ── */
 /* !important below is necessary: the real material.min.css from cdnjs also
-   defines .mdl-layout__drawer / .mdl-navigation and loads after this file,
+   defines .drawer / .mdl-navigation and loads after this file,
    so on tied specificity its rules would otherwise win the cascade. */
-.mdl-layout__drawer {
+.drawer {
   display: block !important;
   flex-direction: initial !important;
   color: inherit;
@@ -697,16 +539,16 @@ p {
   overflow-y: auto !important;
 }
 
-.mdl-layout__drawer .mdl-navigation {
+.drawer .mdl-navigation {
   display: block !important;
 }
 
-.mdl-layout__drawer .mdl-navigation li {
+.drawer .mdl-navigation li {
   display: block !important;
   width: 100% !important;
 }
 
-.mdl-layout__drawer .social-icons li {
+.drawer .social-icons li {
   display: inline-block !important;
 }
 
@@ -719,7 +561,6 @@ p {
 
 .drawer-toggle-btn {
   position: static;
-  margin-right: 12px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -739,73 +580,73 @@ p {
   }
 }
 
-.mdl-layout__drawer .drawer-profile-wrap {
+.drawer .drawer-profile-wrap {
   overflow: hidden;
   background: #16161e;
 }
 
-.mdl-layout__drawer .candidate-img-drawer {
+.drawer.candidate-img-drawer {
   height: 123px;
   width: 123px;
   border-radius: 50%;
   margin: 0 auto;
 }
 
-.mdl-layout__drawer .candidate-name {
+.drawer .candidate-name {
   font-size: 18px;
   color: #fff;
   text-transform: capitalize;
 }
 
-.mdl-layout__drawer .social-icons {
+.drawer .social-icons {
   text-align: center;
 }
 
-.mdl-layout__drawer .social-icons li {
+.drawer .social-icons li {
   display: inline-block;
   padding: 0 7px;
 }
 
-.mdl-layout__drawer .social-icons li a i {
+.drawer .social-icons li a i {
   color: #848484;
   transition: 0.3s ease;
 }
 
-.mdl-layout__drawer .social-icons li a.facebook-link:hover i {
+.drawer .social-icons li a.facebook-link:hover i {
   color: #3b5998;
 }
 
-.mdl-layout__drawer .social-icons li a.twitter-link:hover i {
+.drawer .social-icons li a.twitter-link:hover i {
   color: #55acee;
 }
 
-.mdl-layout__drawer .social-icons li a.linkedin-link:hover i {
+.drawer .social-icons li a.linkedin-link:hover i {
   color: #0a66c2;
 }
 
-.mdl-layout__drawer .social-icons li a.instagram-link:hover i {
+.drawer .social-icons li a.instagram-link:hover i {
   color: #e4405f;
 }
 
-.mdl-layout__drawer .mdl-navigation {
+.drawer .mdl-navigation {
   padding-top: 0;
 }
 
-.mdl-layout__drawer .mdl-navigation li .mdl-navigation__link {
+.drawer .mdl-navigation li .mdl-navigation__link {
   color: #969696;
   transition: 0.3s ease;
 }
 
-.mdl-layout__drawer .mdl-navigation li .mdl-navigation__link:hover {
+.drawer .mdl-navigation li .mdl-navigation__link:hover {
   background: #16161e;
   color: var(--primary-light);
 }
 
-.mdl-layout__drawer .mdl-navigation li:focus {
+.drawer .mdl-navigation li:focus {
   outline: none;
 }
 
-.mdl-layout__drawer .mdl-navigation li ul li .mdl-navigation__link {
+.drawer .mdl-navigation li ul li .mdl-navigation__link {
   padding-left: 72px;
 }
 
