@@ -47,6 +47,9 @@
 /* Added */
 .toggleBar {
   background-color: var(--text-secondary);
+  padding: 5px;
+  width: 50px;
+  border-radius: 23px;
 }
 
 .toggleBall {
@@ -57,6 +60,19 @@
   margin: 0;
 }
 
+.mdl-layout__header button {
+  background: var(--border);
+  border: none;
+  display: flex;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  padding: 3px;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-left: 0.75rem;
+  transition: background 0.3s ease;
+}
 
 .bg-struct {
   position: absolute;
@@ -65,7 +81,7 @@
   left: 0;
   top: 0;
   overflow: hidden;
-  z-index: -2;
+  z-index: 0;
 }
 
 .bg-struct.bg-img {
@@ -100,7 +116,7 @@
   opacity: 0.8;
   bottom: 0;
   left: 0;
-  z-index: -1;
+  z-index: 1;
 }
 
 .wave:nth-of-type(2) {
@@ -180,11 +196,17 @@ section {
   vertical-align: baseline;
 }
 
-nav {
+nav .mdl-layout__header-row {
   display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
+  justify-content: space-around !important;
   align-items: center;
+  padding: 0 20px !important;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none !important;
+  }
 }
 
 html,
@@ -461,6 +483,13 @@ p {
   position: relative;
 }
 
+.main-content {
+  width: 100%;
+  margin-top: 72px;
+  display: flex;
+  justify-content: center;
+}
+
 .main-wrapper {
   background: var(--bg);
   position: relative;
@@ -547,17 +576,21 @@ p {
   width: auto;
 }
 
+.mdl-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .mdl-layout__container .mdl-layout__drawer,
 .mdl-layout__container .mdl-layout__obfuscator {
   position: fixed;
 }
 
+
 .mdl-layout__header {
   width: 940px;
   margin: 0 auto;
-  right: 0;
-  position: fixed;
-  left: 0;
   background: var(--surface) !important;
   box-shadow: 0 1px 4px var(--shadow);
   border-bottom: 1px solid var(--border);
@@ -598,7 +631,7 @@ p {
   bottom: 0;
   content: "";
   height: 2px;
-  left: 0;
+  left: 50%;
   position: absolute;
   width: 0;
   transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
@@ -606,6 +639,8 @@ p {
 
 .mdl-layout__header .mdl-layout__header-row .mdl-navigation .mdl-navigation__link:hover:after {
   width: 100%;
+  left: 0;
+  right: 0;
 }
 
 .mdl-layout__header .mdl-layout__drawer-button {
@@ -643,13 +678,65 @@ p {
 }
 
 /* ── Drawer ── */
+/* !important below is necessary: the real material.min.css from cdnjs also
+   defines .mdl-layout__drawer / .mdl-navigation and loads after this file,
+   so on tied specificity its rules would otherwise win the cascade. */
 .mdl-layout__drawer {
-  display: block;
+  display: block !important;
+  flex-direction: initial !important;
   color: inherit;
   background: #1e1e2e;
   border-right: medium none;
-  width: 280px;
-  transform: translateX(-280px);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 100vh !important;
+  width: 300px !important;
+  max-width: 85vw;
+  z-index: 1000 !important;
+  overflow-y: auto !important;
+}
+
+.mdl-layout__drawer .mdl-navigation {
+  display: block !important;
+}
+
+.mdl-layout__drawer .mdl-navigation li {
+  display: block !important;
+  width: 100% !important;
+}
+
+.mdl-layout__drawer .social-icons li {
+  display: inline-block !important;
+}
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.drawer-toggle-btn {
+  position: static;
+  margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  box-shadow: none;
+}
+
+.drawer-toggle-btn:hover {
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+@media (max-width: 1023px) {
+  .drawer-toggle-btn {
+    display: flex;
+  }
 }
 
 .mdl-layout__drawer .drawer-profile-wrap {
@@ -1181,6 +1268,13 @@ p {
   .mdl-layout__header {
     width: 100%;
   }
+}
+
+.container {
+  width: 100%;
+  max-width: 970px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 @media (min-width: 992px) {
