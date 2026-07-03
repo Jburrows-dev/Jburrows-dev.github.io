@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Pt. Prashant Tripathi 
+
 import React from 'react'
 import Link from "next/link"
 import MenuToggle from './menuToggle'
@@ -15,10 +17,9 @@ export default function Nav({ name, isOpen, setIsOpen }: NavProps) {
             <div className="flex items-center justify-left gap-2 ">
                 <MenuToggle isOpen={isOpen} toggle={() => setIsOpen((v) => !v)} />
                 <Link href="/">
-                    <span className="title !tracking-wide">{name}</span>
+                    <span className="title">{name}</span>
                 </Link>
             </div>
-            <div className="mdl-layout-spacer"></div>
             <div className="flex justify-right items-center gap-8 self-stretch">
                 <ul className="nav-links flex gap-2">
                     <li><Link className="nav-link" data-scroll href="#body">About</Link></li>

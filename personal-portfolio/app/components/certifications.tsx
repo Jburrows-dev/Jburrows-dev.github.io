@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Pt. Prashant Tripathi 
+
 import { certification } from "./types/types"
 import VerifiedIcon from '@mui/icons-material/Verified';
 

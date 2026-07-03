@@ -1,15 +1,15 @@
 export type detail = {
-    emoji?: string,
+    iconClass?: string,
     label: string,
     value: string
 }
 
 export type social = {
     id: string,
-    class: string,
-    icon: string,
+    svgPath: string
     url: string,
-    label: string
+    label: string,
+    hoverColor: string
 }
 
 export type about = {
@@ -37,9 +37,21 @@ export type experience = {
     description: string
 }
 
+type viewBox = {
+    width: number,
+    height: number
+}
+
+type chip = {
+    svgPath: string,
+    label: string,
+    viewBox?: viewBox
+}
+
 export type skill = {
+    groupIcon: string,
     group: string,
-    chips: Array<string>
+    chips: Array<chip>,
 }
 
 export type certification = {
@@ -57,8 +69,7 @@ export type repo = {
     lang: string,
     date: string,
     stars: number,
-    forks: number,
-    generatedOn: string
+    forks: number
 }
 
 export type resume = {

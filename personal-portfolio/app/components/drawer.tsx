@@ -1,3 +1,5 @@
+// Copyright (c) 2026 Pt. Prashant Tripathi 
+
 "use client"
 
 import Link from "next/link"
@@ -6,7 +8,6 @@ import React from 'react'
 import type { Variants } from "motion/react"
 import { stagger } from "motion/react"
 import * as motion from "motion/react-client"
-import { useState } from "react"
 import { social } from "./types/types"
 import MenuToggle from "./menuToggle"
 
@@ -64,8 +65,25 @@ export default function Drawer({ name, avatar, social, isOpen, setIsOpen }: Draw
                         <motion.ul className="social-icons mb-30" variants={navListVariants}>
                             {social.map((s) => (
                                 <motion.li key={s.id} variants={itemVariants}>
-                                    <Link className={s.class} href={s.url}>
-                                        <i className={`zmdi zmdi-${s.label}`}></i>
+                                    <Link href={s.url}>
+
+                                        <svg
+                                            width={36}
+                                            height={36}
+                                            viewBox="0 0 24 24"
+                                            className={`social-svg md:h-[48px] md:w-[48px] fill-(--text-secondary) ${s.hoverColor}`}
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d={s.svgPath} />
+                                        </svg>
+
+
+                                        <div className="absolute bottom-full left-1/2 mb-2 w-max -translate-x-1/2 scale-90 opacity-0 pointer-events-none transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100">
+                                            <div className="relative bg-slate-900 text-white text-xs rounded px-3 py-1.5 shadow-xl">
+                                                {s.label}
+                                                <div className="absolute top-full left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1 bg-slate-900 rotate-45"></div>
+                                            </div>
+                                        </div>
                                     </Link>
                                 </motion.li>
                             ))}
