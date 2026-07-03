@@ -18,24 +18,26 @@ export default function Home() {
   const about = resume.about;
   return (
     <div className="main-wrapper">
+      <div className="bg-wrapper">
       <div className="bg-struct bg-img">
         <div className="wave"></div>
         <div className="wave"></div>
         <div className="wave"></div>
       </div>
+      </div>
 
-      <div className="">
+      <div className="main-content">
         <Nav name={about.name} isOpen={isOpen} setIsOpen={setIsOpen}/>
         <Drawer name={about.name} avatar={about.avatar} social={about.social} isOpen={isOpen} setIsOpen={setIsOpen}/>
 
         <main className="main-content relative">
           <div className="container">
-            <About />
-            <WhatIDo attributes={resume.whatIDo} />
+            {/* {/* <About /> */}
+            {/* <WhatIDo attributes={resume.whatIDo} />
             <Experience experiences={resume.experience} />
-            {/* <Skill skills={resume.skills} /> */}
-            {/* <Certifications certifications={resume.certifications} /> */}
-            {/* <Repos repos={resume.repos} /> */}
+            <Skill skills={resume.skills} /> 
+            <Certifications certifications={resume.certifications} /> */}
+            <Repos repos={resume.repos} />
             <Footer name={about.name} /> 
           </div>
         </main>

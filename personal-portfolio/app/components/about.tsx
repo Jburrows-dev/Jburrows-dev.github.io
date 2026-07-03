@@ -8,9 +8,9 @@ export default function About() {
     const details = about.details;
 
     return (
-        <section id="body" className="card about-sec !mt-36 !sm:mt-30 mb-30 p-5">
+        <section id="body" className="card about-sec !mt-36 !sm:mt-30 mb-30">
             <div className="flex flex-col justify-around items-center">
-                <Image id="about-img" className="candidate-img mb-35" src={about.avatar} alt={about.name} width={250} height={250} />
+                <Image id="about-img" className="candidate-img !mb-3" src={about.avatar} alt={about.name} width={250} height={250} />
                 <ul id="about-social" className="social-icons">
                     {social.map(s =>
                         <li key={s.id}>
@@ -34,11 +34,11 @@ export default function About() {
                 <div className="info-wrap">
                     <h1 id="about-name">{about.name}</h1>
                     <h5 id="about-tagline" className="mt-20 font-grey">{about.tagline}</h5>
-                    <div className="mt-30">
+                    <div className="flex flex-row justify-center lg:justify-start items-center gap-2">
                         <Link id="download_cv"
-                            className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect bg-(--secondary) font-white mr-10"
+                            className="about-button button-raised bg-(--secondary) font-white !mr-2"
                             href={about.resume} download>Download Resume</Link>
-                        <Link className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect bg-(--primary) font-white"
+                        <Link className="about-button  button-raised bg-(--primary) font-white"
                             href={about.email} data-scroll>Email</Link>
                     </div>
                 </div>

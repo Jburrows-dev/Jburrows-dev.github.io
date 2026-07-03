@@ -10,12 +10,12 @@ export default function Experience({ experiences }: { experiences: Array<experie
                         {experiences.map(e =>
                             <div key={`${e.company}${e.role}`} className="timeline-item">
                                 <div className="timeline-dot"></div>
-                                <div className="mdl-card exp-card">
+                                <div className="card exp-card">
                                     <div className="exp-company">
-                                        {e.company}{e.current && <span className="exp-badge ml-5">Current</span>}
+                                        {e.company}{e.current && <span className="exp-badge">Current</span>}
                                     </div>
                                     <div className="exp-role">{e.role}</div>
-                                    <div className="exp-meta">
+                                    <div className="exp-meta flex flex-col gap-2 md:flex-row md:gap-4">
                                         <span><i className="zmdi zmdi-pin"></i> {e.location}</span>
                                         <span><i className="zmdi zmdi-calendar"></i> {e.period}</span>
                                     </div>

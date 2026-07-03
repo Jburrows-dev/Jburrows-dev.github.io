@@ -19,7 +19,7 @@ export default function Nav({ name, isOpen, setIsOpen }: NavProps) {
                 </Link>
             </div>
             <div className="mdl-layout-spacer"></div>
-            <div className="flex justify-right items-center gap-8">
+            <div className="flex justify-right items-center gap-8 self-stretch">
                 <ul className="nav-links flex gap-2">
                     <li><Link className="nav-link" data-scroll href="#body">About</Link></li>
                     <li><Link className="nav-link" data-scroll href="#portfolio_sec">What I Do</Link></li>
