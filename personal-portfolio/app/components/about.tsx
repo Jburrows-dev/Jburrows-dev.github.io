@@ -44,10 +44,10 @@ export default function About() {
                 <div className="info-wrap">
                     <h1 id="about-name">{about.name}</h1>
                     <h5 id="about-tagline" className="!lg:mt-20 font-(--text-secondary)">{about.tagline}</h5>
-                    <div className="flex flex-row justify-center md:justify-start items-center gap-2">
+                    <div className="flex flex-row md:justify-start items-center gap-2">
                         <Link id="download_cv"
                             className="about-button button-raised bg-(--secondary) hover:bg-(--accent) font-white !mr-2"
-                            href={about.resume} download>Download Resume</Link>
+                            href={about.resume} download>Resume</Link>
                         <Link className="about-button  button-raised bg-(--primary) hover:bg-(--primary-light) font-white"
                             href={about.email} data-scroll>Contact</Link>
                     </div>

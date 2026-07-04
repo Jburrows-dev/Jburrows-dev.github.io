@@ -249,7 +249,7 @@ body {
   color: var(--text-secondary);
   background: var(--bg);
   font-family: "Roboto", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-style: normal;
   line-height: 1.6;
   overflow-y: auto;
@@ -654,12 +654,6 @@ p {
   }
 }
 
-.about-sec {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
 #about-name {
   font-size: x-large;
   margin: 0;
@@ -678,8 +672,8 @@ p {
 }
 
 .about-sec #about-img {
-  height: 230px;
-  width: 200px;
+  height: 220px;
+  width: 220px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.26);
   background-size: cover;
@@ -743,7 +737,7 @@ p {
 
 .about-sec.card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .about-button {
@@ -753,16 +747,15 @@ p {
   align-items: center;
   color: #fff;
   height: 40px;
-  padding: 12px 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 500;
   border-radius: 4px;
 }
 
-
-@media (max-width:800px) {
+@media (min-width:800px) {
   .about-sec {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .about-sec .info-wrap {
@@ -820,13 +813,22 @@ p {
   box-shadow: 0 8px 24px var(--shadow);
 }
 
+#whatido-cards .card p {
+  font-size: 15px;
+}
+
+@media (min-width: 762px) {
+  #whatido-cards .card p {
+    font-size: medium;
+  }
+}
+
 .profile-sec .profile-icon {
   font-size: 60px;
   display: block;
   margin-bottom: 10px;
 }
 
-/* ── Interests ── */
 .interest-sec .card i {
   font-size: 30px;
   display: block;
@@ -848,7 +850,6 @@ p {
   transform: translateY(-3px);
 }
 
-/* ── Experience Timeline ── */
 .experience-sec .timeline {
   position: relative;
   padding-left: 30px;
@@ -870,6 +871,17 @@ p {
   position: relative;
   margin-bottom: 28px;
 }
+
+.experience-sec .timeline-item .card p {
+  font-size: 15px;
+}
+
+@media (min-width: 762px) {
+  .experience-sec .timeline-item .card p {
+    font-size: medium;
+  }
+}
+
 
 .experience-sec .timeline-item:last-child {
   margin-bottom: 0;
@@ -964,7 +976,7 @@ p {
   border: 1px solid rgba(21, 101, 192, 0.25);
   margin-bottom: 3px;
   border-radius: 20px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   transition: background 0.2s ease, transform 0.2s ease;
 }
@@ -973,6 +985,12 @@ p {
   background: var(--primary);
   color: #fff;
   transform: translateY(-2px);
+}
+
+@media (min-width: 762px) {
+  .skill-chip {
+    font-size: medium;
+  }
 }
 
 [data-theme="dark"] .skill-chip {
