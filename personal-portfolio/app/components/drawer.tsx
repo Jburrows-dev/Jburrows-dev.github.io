@@ -71,7 +71,7 @@ export default function Drawer({ name, avatar, social, isOpen, setIsOpen }: Draw
                                             width={36}
                                             height={36}
                                             viewBox="0 0 24 24"
-                                            className={`social-svg md:h-[48px] md:w-[48px] fill-(--text-secondary) ${s.hoverColor}`}
+                                            className={`drawer-svg social-svg fill-(--text-secondary) ${s.hoverColor}`}
                                             xmlns="http://www.w3.org/2000/svg"
                                         >
                                             <path d={s.svgPath} />

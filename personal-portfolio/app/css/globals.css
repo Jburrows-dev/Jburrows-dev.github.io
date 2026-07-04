@@ -364,27 +364,6 @@ p {
   transition: background 0.3s ease;
 }
 
-.about-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  height: 40px;
-  padding: 12px 12px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  border-radius: 4px;
-}
-
-@media (max-width: 300px) {
-  .about-button {
-    font-size: normal;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-  }
-}
-
 .button-raised {
   box-shadow: 0 2px 4px var(--shadow), 0 1px 8px var(--shadow);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
@@ -422,6 +401,7 @@ p {
   align-items: stretch;
   color: var(--text);
   height: 100%;
+  gap: 0;
 }
 
 .nav-link {
@@ -440,6 +420,12 @@ p {
 @media (max-width: 762px) {
   .nav-links {
     display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  .nav-link {
+    font-size: small;
     gap: 2px;
   }
 }
@@ -447,6 +433,7 @@ p {
 @media (min-width: 900px) {
   .nav-link {
     font-size: medium;
+    gap: 2px;
   }
 }
 
@@ -497,8 +484,9 @@ p {
   top: 0;
   left: 0;
   height: 100vh;
-  width: 250px;
-  max-width: 85vw;
+  width: 100vw;
+  min-width: 250px;
+  min-height: 250px;
   z-index: 100;
   overflow-y: auto;
 }
@@ -545,16 +533,12 @@ p {
 
 }
 
-@media (max-width: 1023px) {
-  .drawer-toggle-btn {
-    display: flex;
-  }
-}
-
 .drawer .drawer-profile-wrap {
   box-sizing: border-box;
-  height: 250px;
-  width: 250px;
+  height: 100vw;
+  width: 100vw;
+  min-width: 250px;
+  min-height: 250px;
   padding: 8px;
   border-radius: 8px;
   overflow: hidden;
@@ -562,8 +546,10 @@ p {
 }
 
 .candidate-img-drawer {
-  height: 125px;
-  width: 125px;
+  height: 50vw;
+  width: 50vw;
+  min-width: 125px;
+  min-height: 125px;
   border-radius: 50%;
   margin: 8px auto;
   border-radius: 50%;
@@ -585,26 +571,9 @@ p {
   padding: 0 10px;
 }
 
-.drawer .social-icons li a i {
-  color: var(--text-secondary);
-  transition: 0.3s ease;
-  font-size: 20px;
-}
-
-.drawer .social-icons li a.facebook-link:hover i {
-  color: #3b5998;
-}
-
-.drawer .social-icons li a.twitter-link:hover i {
-  color: #55acee;
-}
-
-.drawer .social-icons li a.linkedin-link:hover i {
-  color: #0a66c2;
-}
-
-.drawer .social-icons li a.instagram-link:hover i {
-  color: #e4405f;
+.drawer-svg {
+  height: 24px;
+  width: 24px;
 }
 
 .drawer .drawer-navigation {
@@ -621,6 +590,7 @@ p {
 .drawer .drawer-navigation li .drawer-nav-link {
   color: #969696;
   transition: 0.3s ease;
+  font-size: medium;
 }
 
 .drawer .drawer-navigation li:hover {
@@ -643,34 +613,73 @@ p {
   color: #666;
 }
 
-/* ── About ── */
+@media (min-width: 200px) {
+  .drawer-svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 300px) {
+  .drawer-svg {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+@media (min-width: 350px) {
+  .drawer {
+    width: 300px;
+  }
+
+  .drawer-profile-wrap {
+    width: 300px !important;
+    height: 300px ! important;
+  }
+
+  .candidate-img-drawer {
+    max-height: 150px;
+    max-width: 150px;
+  }
+
+  .drawer-nav-link {
+    font-size: larger !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .drawer-toggle-btn {
+    display: flex;
+  }
+}
+
 .about-sec {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 40px 40px;
+}
+
+#about-name {
+  font-size: x-large;
+  margin: 0;
+}
+
+#about-tagline {
+  font-size: 16px !important;
+  margin: 0;
+  margin-bottom: 10px !important;
 }
 
 .info-wrap {
   display: flex;
   flex-direction: column;
-  gap: 8px;
   margin-bottom: 12px;
 }
 
-@media (min-width: 762px) {
-  .about-sec {
-    flex-direction: row;
-  }
-
-  .info-wrap {
-    margin-bottom: 0px;
-  }
-}
-
-.about-sec .candidate-img {
+.about-sec #about-img {
   height: 230px;
-  width: 230px;
+  width: 200px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.26);
   background-size: cover;
@@ -681,43 +690,24 @@ p {
   border: 4px solid var(--surface);
 }
 
-.about-sec .social-icons {
+#about-social.social-icons {
+  display: flex;
   text-align: center;
 }
 
-.about-sec .social-icons li {
+#about-social.social-icons li {
   display: inline-block;
   padding: 0 9px;
 }
 
-.about-sec .social-icons li:focus {
+#about-social.social-icons li:focus {
   outline: none;
 }
 
-.about-sec .social-icons li a i {
+#about-social.social-icons li a i {
   color: #848484;
   font-size: 30px;
   transition: 0.3s ease;
-}
-
-.about-sec .social-icons li a.facebook-link:hover i {
-  color: #3b5998;
-}
-
-.about-sec .social-icons li a.twitter-link:hover i {
-  color: #55acee;
-}
-
-.about-sec .social-icons li a.linkedin-link:hover i {
-  color: #0a66c2;
-}
-
-.about-sec .social-icons li a.instagram-link:hover i {
-  color: #e4405f;
-}
-
-.about-sec .social-icons li a.github-link:hover i {
-  color: #333;
 }
 
 .about-sec .profile-wrap li {
@@ -748,6 +738,68 @@ p {
 #about-details {
   font-size: medium;
   margin: 10px 0;
+}
+
+
+.about-sec.card {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  height: 40px;
+  padding: 12px 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  border-radius: 4px;
+}
+
+
+@media (max-width:800px) {
+  .about-sec {
+    flex-direction: column;
+  }
+
+  .about-sec .info-wrap {
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .about-sec {
+    gap: 16px;
+  }
+
+  #about-img {
+    height: 200px !important;
+    width: 200px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-button {
+    font-size: normal;
+    letter-spacing: 1.5px;
+  }
+}
+
+@media (max-width: 350px) {
+  .social-svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .about-button {
+    font-size: small;
+    font-weight: bold;
+    letter-spacing: 0;
+    padding: 3px;
+  }
 }
 
 /* ── What I Do ── */
@@ -1230,14 +1282,6 @@ p {
 }
 
 @media (max-width: 768px) {
-  .about-sec .candidate-img {
-    height: 180px;
-    width: 180px;
-  }
-
-  .about-sec .info-wrap {
-    text-align: center;
-  }
 
   .experience-sec .exp-meta {
     flex-direction: column;
@@ -1248,18 +1292,6 @@ p {
 @media (max-width: 568px) {
   h1 {
     font-size: 35px;
-  }
-}
-
-@media (max-width: 567px) {
-  .about-sec .profile-wrap li {
-    margin-bottom: 18px;
-  }
-
-  .about-sec .profile-wrap li .profile-title {
-    display: block;
-    width: 100%;
-    margin-bottom: 4px;
   }
 }
 

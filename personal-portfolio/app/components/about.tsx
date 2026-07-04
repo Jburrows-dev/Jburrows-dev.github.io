@@ -10,7 +10,7 @@ export default function About() {
     const details = about.details;
 
     return (
-        <section id="body" className="card about-sec !mt-36 !sm:mt-30 mb-30">
+        <section id="body" className="card about-sec p-[12px] !mt-36 !sm:mt-30 mb-30">
             <div className="flex flex-col justify-around items-center">
                 <Image id="about-img" className="candidate-img !mb-3" src={about.avatar} alt={about.name} width={250} height={250} />
                 <ul id="about-social" className="social-icons">
@@ -22,7 +22,7 @@ export default function About() {
                                     width={36}
                                     height={36}
                                     viewBox="0 0 24 24"
-                                    className={`social-svg md:h-[48px] md:w-[48px] fill-(--text-secondary) ${s.hoverColor}`}
+                                    className={`social-svg md:h-[30px] md:w-[30px] fill-(--text-secondary) ${s.hoverColor}`}
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path d={s.svgPath} />
@@ -43,8 +43,8 @@ export default function About() {
             <div className="flex flex-col justify-around">
                 <div className="info-wrap">
                     <h1 id="about-name">{about.name}</h1>
-                    <h5 id="about-tagline" className="mt-20 font-grey">{about.tagline}</h5>
-                    <div className="flex flex-row justify-center lg:justify-start items-center gap-2">
+                    <h5 id="about-tagline" className="!lg:mt-20 font-(--text-secondary)">{about.tagline}</h5>
+                    <div className="flex flex-row justify-center md:justify-start items-center gap-2">
                         <Link id="download_cv"
                             className="about-button button-raised bg-(--secondary) hover:bg-(--accent) font-white !mr-2"
                             href={about.resume} download>Download Resume</Link>

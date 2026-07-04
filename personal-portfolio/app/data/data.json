@@ -58,19 +58,17 @@
             "icon": "zmdi zmdi-shield-check",
             "iconColor": "text-(--primary)",
             "title": "Cybersecurity Student",
-            "description": "I specialise in building robust data pipelines on <strong>Azure</strong> cloud. With 6+ years of experience in ETL/ELT, I design and optimise large-scale data workflows using PySpark, Azure Data Factory, Databricks, and Delta Lake. Passionate about turning raw data into reliable, actionable insights."
+            "description": "I'm currently studying cybersecurity with the goal of joining an organization and making their digital presence more safe. Training under the CyberArch Program at UGA, I completed several professional courses to get a baseline understanding of cybersecurity principles, especially governance and compliance. In my free time, I like to participate in cybersecurity clubs around campus that teach hacking skills for national competitions."
         },
         {
             "icon": "zmdi zmdi-graduation-cap",
             "iconColor": "text-(--secondary)",
             "title": "Workshop Facilitator",
-            "description": "An Otaku at heart — deeply passionate about anime, manga, and the rich storytelling traditions of Japanese pop culture. I enjoy fan communities, exploring new series, and finding the parallels between epic narratives and the craft of building software."
-        },
-        {
+            "description": "My own experience learning computer science later on in my career, motivates me to make computer science more enjoyable and more approachable for younger students, so they can get more familiar with it earlier on.",
             "icon": "zmdi zmdi-book",
             "iconColor": "text-(--accent)",
             "title": "Learner",
-            "description": "Continuously evolving — whether it's a new cloud service, a programming paradigm, or Vedic philosophy. I thrive in fast-paced environments and love tackling real-world problems with elegant, well-crafted solutions."
+            "description": "As an aspiring cybersecurity professional, I always want to grow my knowledge. New digital threats constantly emerge, and I want to be among those who adapt to face these threats head-on."
         }
     ],
     "experience": [
